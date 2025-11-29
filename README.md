@@ -1,1 +1,94 @@
-# catastrophs.github.io
+<!DOCTYPE html>
+<!-- 声明文档类型为HTML5 -->
+<html lang="zh-CN">
+<!-- html根标签，lang指定语言为中文 -->
+<head>
+    <!-- 头部区域：包含网页元信息，不直接显示在页面上 -->
+    <meta charset="UTF-8">
+    <!-- 设置字符编码为UTF-8，避免中文乱码 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 适配移动端：视口宽度等于设备宽度，初始缩放比例1.0 -->
+    <title>猫咖</title>
+    <!-- 网页标题：显示在浏览器标签页 -->
+    <!-- 内部样式表：基础样式设置 -->
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 页面主体样式 */
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        /* 标题样式 */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        /* 段落样式 */
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        /* 列表样式 */
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        /* 链接样式 */
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        /* 容器样式 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- 主体区域：网页可见内容 -->
+    <div class="container">
+        <!-- 一级标题 -->
+        <h1>猫咖</h1>
+        
+        <!-- 段落标签 -->
+        <p>HTML（超文本标记语言）是构建网页的基础，以下是一些HTML基础知识点：</p>
+        
+        <!-- 无序列表 -->
+        <ul>
+            <li>HTML使用标签来描述网页结构</li>
+            <li>HTML5是最新的HTML标准，增加了许多新特性</li>
+            <li>HTML标签通常成对出现（如&lt;div&gt;&lt;/div&gt;）</li>
+            <li>通过CSS可以美化HTML页面样式</li>
+        </ul>
+        
+        <!-- 段落 + 链接 -->
+        <p>如果你想学习更多HTML知识，可以访问<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" target="_blank">MDN Web文档</a>（新标签页打开）。</p>
+        
+        <!-- 图片标签：alt属性为图片无法显示时的替代文本 -->
+        <img src="https://picsum.photos/800/400" alt="示例图片" style="width: 100%; border-radius: 6px; margin: 20px 0;">
+        
+        <!-- 强调文本 -->
+        <p><strong>提示：</strong>保存此文件为<code>index.html</code>，用浏览器打开即可查看效果。</p>
+    </div>
+</body>
+</html>
