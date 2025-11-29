@@ -1,94 +1,198 @@
 <!DOCTYPE html>
-<!-- 声明文档类型为HTML5 -->
 <html lang="zh-CN">
-<!-- html根标签，lang指定语言为中文 -->
 <head>
-    <!-- 头部区域：包含网页元信息，不直接显示在页面上 -->
     <meta charset="UTF-8">
-    <!-- 设置字符编码为UTF-8，避免中文乱码 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 适配移动端：视口宽度等于设备宽度，初始缩放比例1.0 -->
-    <title>猫咖</title>
-    <!-- 网页标题：显示在浏览器标签页 -->
-    <!-- 内部样式表：基础样式设置 -->
+    <title>响应式导航栏</title>
     <style>
-        /* 全局样式重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
         }
-        /* 页面主体样式 */
-        body {
-            font-family: "Microsoft YaHei", sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-            padding: 20px;
+
+        /* 导航栏容器 */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 0 20px;
+            position: sticky; /* 粘性导航，滚动时固定在顶部 */
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        /* 标题样式 */
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        /* 段落样式 */
-        p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        /* 列表样式 */
-        ul {
-            margin: 15px 0 15px 30px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        /* 链接样式 */
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-        /* 容器样式 */
-        .container {
-            max-width: 800px;
+
+        /* 导航内容容器 */
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        /* 品牌/logo */
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        /* 导航链接 */
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        /* 链接悬停下划线效果 */
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3498db;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* 移动端汉堡按钮 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* 响应式样式 - 移动端适配 */
+        @media (max-width: 768px) {
+            /* 隐藏默认菜单 */
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                background-color: #2c3e50;
+                width: 100%;
+                height: calc(100vh - 60px);
+                padding: 20px;
+                transition: left 0.3s ease;
+                gap: 20px;
+            }
+
+            /* 显示汉堡按钮 */
+            .hamburger {
+                display: flex;
+            }
+
+            /* 菜单激活状态 */
+            .nav-menu.active {
+                left: 0;
+            }
+
+            /* 汉堡按钮动画（变成X） */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 主体区域：网页可见内容 -->
-    <div class="container">
-        <!-- 一级标题 -->
-        <h1>猫咖</h1>
-        
-        <!-- 段落标签 -->
-        <p>HTML（超文本标记语言）是构建网页的基础，以下是一些HTML基础知识点：</p>
-        
-        <!-- 无序列表 -->
-        <ul>
-            <li>HTML使用标签来描述网页结构</li>
-            <li>HTML5是最新的HTML标准，增加了许多新特性</li>
-            <li>HTML标签通常成对出现（如&lt;div&gt;&lt;/div&gt;）</li>
-            <li>通过CSS可以美化HTML页面样式</li>
-        </ul>
-        
-        <!-- 段落 + 链接 -->
-        <p>如果你想学习更多HTML知识，可以访问<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" target="_blank">MDN Web文档</a>（新标签页打开）。</p>
-        
-        <!-- 图片标签：alt属性为图片无法显示时的替代文本 -->
-        <img src="https://picsum.photos/800/400" alt="示例图片" style="width: 100%; border-radius: 6px; margin: 20px 0;">
-        
-        <!-- 强调文本 -->
-        <p><strong>提示：</strong>保存此文件为<code>index.html</code>，用浏览器打开即可查看效果。</p>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- 猫咖新闻/Logo -->
+            <a href="#" class="navbar-brand">MyWebsite</a>
+            
+            <!-- 移动端汉堡按钮 -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- 导航菜单 -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">猫咖新闻</a></li>
+                <li><a href="#services" class="nav-link">猫咖赛事</a></li>
+                <li><a href="#contact" class="nav-link">猫咖表白墙</a></li>
+                <li><a href="#blog" class="nav-link">猫咖代定</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 页面内容示例 -->
+    <div style="height: 1500px; padding: 20px;">
+        <h1 style="margin: 20px 0;">欢迎访问我们的网站</h1>
+        <p>滚动页面查看粘性导航效果，缩小窗口查看移动端汉堡菜单</p>
     </div>
+
+    <script>
+        // 汉堡菜单交互逻辑
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // 点击导航链接关闭移动端菜单
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // 滚动时导航栏样式优化（可选）
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = '#1a2530';
+            } else {
+                navbar.style.backgroundColor = '#2c3e50';
+            }
+        });
+    </script>
 </body>
 </html>
